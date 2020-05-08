@@ -11,7 +11,7 @@
 - Locations of the readers must be sparse enough to minimize electromagnetic  
 - User to identify and validate mouse 
 ##### Overhead Camera 
-- Records videoa at approximately 10.0 fps
+- Records videos at approximately 10.0 fps
 ## Analytical Codes and Modules
 ##### yolov3-tf2 
 yolov-3 tf2:forked from zzh8829 [GitHub Pages](https://github.com/zzh8829/yolov3-tf2)
