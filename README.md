@@ -41,3 +41,5 @@ here [Link](https://www.pyimagesearch.com/2018/07/23/simple-object-tracking-with
 - Current work in progress
 - RFID detections at the frame of interest will be associated with the SORT track that is in highest proximation 
 - RFID detection at entry area will be verify the specific mouse that entered or existed
+##### Current results of Yolov3-SORT without RFID detection
+![](yolov3-tf2-sort_sample.gif)
