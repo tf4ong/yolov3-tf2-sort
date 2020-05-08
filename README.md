@@ -1,7 +1,7 @@
 # Current work in progress
 # Yolov3-tf2-SORT
 - A integration of Yolov3-tf2, SORT, RFID read detections for mice tracking in home-cage environment
-- Original inspiration and protype Judge24601[Github Page](https://github.com/ubcbraincircuits/NaturalMouseTracker)
+- Original inspiration and protype Judge24601 [Github Page](https://github.com/ubcbraincircuits/NaturalMouseTracker)
 - A raspberry-pi based system for offline tracking of mice 
 ## Related hardware
 - Code for data collection ubcbraincircuits[Github](https://github.com/ubcbraincircuits/NaturalMouseTracker_rpi)
@@ -26,7 +26,7 @@ SORT: forcked from abewly [GitHub Pages](https://github.com/abewley/sort)
 rudimentary data association and state estimation techniques. 
 - Produces object identities on the fly and tracks them 
 - Initiatially described in [this paper](https://arxiv.org/abs/1602.00763)
-- Greatly depends on detection Quality
+- Greatly depends on detection quality
 - Handles detection lost during occlusions and Yolov3 failures
 ##### RFID_Matching 
 Customed writted script for track reassocation and RFID assignment
