@@ -1,10 +1,10 @@
 # Current work in progress
 # Yolov3-tf2-SORT
 - A integration of Yolov3-tf2, SORT, RFID read detections for mice tracking in home-cage environment
-- Original inspiration and protype Judge24601 [Github Page](https://github.com/ubcbraincircuits/NaturalMouseTracker)
+- Original inspiration and protype Judge24601 [Braeden Jury](https://github.com/ubcbraincircuits/NaturalMouseTracker)
 - A raspberry-pi based system for offline tracking of mice 
 ## Related hardware
-- Code for data collection ubcbraincircuits[Github](https://github.com/ubcbraincircuits/NaturalMouseTracker_rpi)
+- Code for data collection [Alice Xu](https://github.com/ubcbraincircuits/NaturalMouseTracker_rpi)
 ##### RFID System
 - 5 ID-20LA RFID tag readers setup at the custome locations at the bottom of the cage
 - 1 RIFD reader must be positioned at the entrance area (under the tunnel linking the cage and the untracked area)
@@ -14,13 +14,13 @@
 - Records videos at approximately 10.0 fps
 ## Analytical Codes and Modules
 ##### yolov3-tf2 
-yolov-3 tf2:forked from zzh8829 [GitHub Pages](https://github.com/zzh8829/yolov3-tf2)
+yolov3-tf2:forked from [zzh8829 GitHub Pages](https://github.com/zzh8829/yolov3-tf2)
 - A tensorflow2 based implementation of yolov3-tf2 which is easy to install and use
 - Uses Nvidia GPU, can be cloned and used on Anaconda or on Google Colab with GPU turned on 
 - Simple object recognition module for detecting mice
-- Orginal implmentation in darknet can be found at AlexeyAB [GitHub Page](https://github.com/AlexeyAB/darknet)
+- Orginal implmentation in darknet can be found at [AlexeyAB](https://github.com/AlexeyAB/darknet)
 ##### SORT 
-SORT: forcked from abewly [GitHub Pages](https://github.com/abewley/sort)
+SORT: forcked from [abewly GitHub Pages](https://github.com/abewley/sort)
 - A simple online and realtime tracking algorithm for 2D multiple object tracking in video sequences.
 - Implements a visual multiple object tracking framework based on 
 rudimentary data association and state estimation techniques. 
