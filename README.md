@@ -34,7 +34,7 @@ rudimentary data association and state estimation techniques.
 ##### RFID_Matching 
 Customed writted script for track reassocation and RFID assignment
 ###### SORT Track Identity Reassociation: A Euclidean Distance Method
-SORT was orignally designed for tracking objects moving in and out of frames at uniform speed.
+SORT was orignally designed for tracking objects moving in and out of frames at relatively uniform speed.
 Mice movements are often fast changing, therefore SORT often produces new identities for the same mouse.
 Taking advantage of known number of mice detected in the previous frames and that a new mouse can only enter at the 
 designated location, we can therfore reassign new false positive identities to real identities generated. Here, 
