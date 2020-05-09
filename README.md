@@ -4,7 +4,7 @@
 - Original inspiration and prototype by [Braeden Jury](https://github.com/ubcbraincircuits/NaturalMouseTracker)
 - A raspberry-pi based system for offline tracking of mice 
 ## Related hardware
-- Code for data collection written by [Alice Xu](https://github.com/ubcbraincircuits/NaturalMouseTracker_rpi)
+- Code for data collection written by [Alice Xiong](https://github.com/ubcbraincircuits/NaturalMouseTracker_rpi)
 ##### RFID System
 - 5 ID-20LA RFID tag readers setup at the custome locations at the bottom of the cage
 - 1 RIFD reader must be positioned at the entrance area (under the tunnel linking the cage and the untracked area)
