@@ -8,7 +8,7 @@
 ##### RFID System
 - 5 ID-20LA RFID tag readers setup at the custome locations at the bottom of the cage
 - [RFID reader details](https://www.sparkfun.com/products/11828)
-- [RFID reader base](https://www.sparkfun.com/products/9963)
+- [RFID reader base details](https://www.sparkfun.com/products/9963)
 - 1 RIFD reader must be positioned at the entrance area (under the tunnel linking the cage and the untracked area)
 - Locations of the readers must be sparse enough to minimize electromagnetic interference
 - User to identify and validate mouse 
