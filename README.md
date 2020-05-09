@@ -1,6 +1,6 @@
 # Current work in progress
 # Yolov3-tf2-SORT
-- A integration of Yolov3-tf2, SORT, RFID read detections for mice tracking in home-cage environment
+- A integration of Yolov3-tf2, SORT, RFID detections for mice tracking in home-cage environment
 - Original inspiration and prototype by [Braeden Jury](https://github.com/ubcbraincircuits/NaturalMouseTracker)
 - A raspberry-pi based system for offline tracking of mice 
 ## Related hardware
