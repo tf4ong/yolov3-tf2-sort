@@ -19,7 +19,7 @@
 ##### yolov3-tf2 
 yolov3-tf2:forked from [zzh8829 GitHub Page](https://github.com/zzh8829/yolov3-tf2)
 - A tensorflow2 implementation of yolov3-tf2 which is easy to install and use
-- Can be cloned and used on Anaconda or on Google Colab with GPU turned on 
+- Can be cloned and directly used on Anaconda or on Google Colab with GPU turned on 
 - Simple object recognition module for detecting mice
 - Orginal implmentation in darknet can be found at [AlexeyAB GitHub Page](https://github.com/AlexeyAB/darknet)
 ##### SORT 
