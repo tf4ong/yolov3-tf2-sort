@@ -39,7 +39,7 @@ Mice movements are often fast changing, therefore SORT often produces new identi
 Taking advantage of known number of mice detected in the previous frames and that a new mouse can only enter at the 
 designated location, we can therfore reassign new false positive identities to real identities generated from SORT. Here, 
 a centroid tracking algorithm based on Euclidean distances is employed. A tutorial of centroid tracking can be found 
-here [Link](https://www.pyimagesearch.com/2018/07/23/simple-object-tracking-with-opencv/)
+[here](https://www.pyimagesearch.com/2018/07/23/simple-object-tracking-with-opencv/)
 ###### RFID Identification and Verification
 - Current work in progress
 - RFID detections at the frame of interest will be associated with the SORT track that is in highest proximation 
