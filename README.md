@@ -44,5 +44,5 @@ a centroid tracking algorithm based on Euclidean distances is employed. A tutori
 - Current work in progress
 - RFID detections at the frame of interest will be associated with the SORT track that is in highest proximation 
 - RFID detection at entry area will be verify the specific mouse that entered or existed
-##### Current results of Yolov3-SORT without RFID detection
+### Preliminary results of Yolov3-SORT without RFID detection
 ![](Sample_nonRFID.gif)
