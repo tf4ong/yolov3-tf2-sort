@@ -77,7 +77,7 @@ class KalmanBoxTracker(object):
     self.kf.H = np.array([[1,0,0,0,0,0,0],[0,1,0,0,0,0,0],[0,0,1,0,0,0,0],[0,0,0,1,0,0,0]])
 
     self.kf.R[2:,2:] *= 10.
-    self.kf.P[4:,4:] *= 1000. #give high uncertainty to the unobservable initial velocities
+    self.kf.P[4:,4:] *= 10000. #give high uncertainty to the unobservable initial velocities
     self.kf.P *= 10.
     self.kf.Q[-1,-1] *= 0.01
     self.kf.Q[4:,4:] *= 0.01
@@ -161,7 +161,7 @@ def associate_detections_to_trackers(detections,trackers,iou_threshold = 0.5):
   return matches, np.array(unmatched_detections), np.array(unmatched_trackers)
 
 class Sort(object):
-  def __init__(self,max_age=25,min_hits=1):
+  def __init__(self,max_age=5,min_hits=1):
     """
     Sets key parameters for SORT
     """
