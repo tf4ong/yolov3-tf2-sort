@@ -12,7 +12,7 @@ pd.options.mode.chained_assignment = None
 RFID_coords={0:[269, 186, 345, 260],1:[36, 254, 96, 323],2:[39, 65, 96, 130],3:[166, 34, 250, 101],
              4:[416, 51, 490, 128],5:[397, 189, 511, 321]}
 #max distance before centroid ID association is not conducted
-max_distance=150
+max_distance=90
 #max frames to look back into 
 max_frames=30
 # the overlap between bbox and entrance point to do nothing
@@ -602,7 +602,7 @@ def last_tag_match(df,tags):
                 pass
             elif len(unmatched_id) !=1:
                 pass
-            elif tag_left not in [i[4] for i in df.loc[i]['RFID_tracks']]:
+            elif tag_left in [i[4] for i in df.loc[i]['RFID_tracks']]:
                 pass
             else:
                 a=[k for k in df.loc[i]['tracks'] if k[4]==unmatched_id[0]]
@@ -617,40 +617,48 @@ def last_tag_match(df,tags):
                 skip_counter_f=0
                 iou_foward=[z for z,v in df.loc[i+floating_index_f]['iou'].items() if unmatched_id[0] in z and v >overlap_thres]
                 iou_backward=[z for z,v in df.loc[i-floating_index_b]['iou'].items() if unmatched_id[0] in z and v >overlap_thres]
-            while len(iou_backward)<1 and tag_left not in [i[4] for i in df.loc[i-floating_index_b]['RFID_tracks']]:
-                if unmatched_id[0] in df.loc[i-floating_index_b]['track_id']:
-                    a=[k for k in df.loc[i-floating_index_b]['tracks'] if k[4]==unmatched_id[0]]
-                    track=[[a[0][0],a[0][1],a[0][2],a[0][3],tag_left]]
-                    track_f=df.loc[i-floating_index_b,'RFID_tracks']+track
-                    df.at[i-floating_index_b,'RFID_tracks']=track_f
-                    RFID_matched= df.loc[i-floating_index_b,'RFID_matched']+[[unmatched_id[0],tag_left]]
-                    df.at[i-floating_index_b,'RFID_matched']=RFID_matched
-                    floating_index_b+=1
-                    iou_backward=[z for z,v in df.loc[i-floating_index_b]['iou'].items() if unmatched_id[0 in z and v >overlap_thres]]
-                else: 
-                    skip_counter_b+=1
-                    floating_index_b+=1
-                if i-floating_index_b ==-1 or skip_counter_b ==30:
-                    iou_backward=[1,1,1,1]
-            else:
-                pass
-            while len(iou_foward)<1 and tag_left not in [i[4] for i in df.loc[i-floating_index_b]['RFID_tracks']]:
-                if unmatched_id[0] in df.loc[i+floating_index_f]['track_id']:
-                    a=[k for k in df.loc[i+floating_index_f]['tracks'] if k[4]==unmatched_id[0]]
-                    track=[[a[0][0],a[0][1],a[0][2],a[0][3],tag_left]]
-                    track_f=df.loc[i+floating_index_f,'RFID_tracks']+track
-                    df.at[i+floating_index_f,'RFID_tracks']=track_f
-                    RFID_matched=df.loc[i+floating_index_f,'RFID_matched']+[[unmatched_id[0],tag_left]]
-                    df.at[i+floating_index_f,'RFID_matched']=RFID_matched
-                    floating_index_f+=1
-                    iou_foward=[z for z,v in df.loc[i+floating_index_f]['iou'].items() if unmatched_id[0] in z and v >overlap_thres]
-                else:
-                     skip_counter_f+=1
-                     floating_index_f+=1
-                if skip_counter_f ==30 or i+floating_index_f==len(df)-1:
-                    iou_foward=[1,1,1,1,1]
+                while len(iou_backward)<1:
+                    if unmatched_id[0] in df.loc[i-floating_index_b]['track_id']:
+                        a=[k for k in df.loc[i-floating_index_b]['tracks'] if k[4]==unmatched_id[0]]
+                        track=[[a[0][0],a[0][1],a[0][2],a[0][3],tag_left]]
+                        track_f=df.loc[i-floating_index_b,'RFID_tracks']+track
+                        df.at[i-floating_index_b,'RFID_tracks']=track_f
+                        RFID_matched= df.loc[i-floating_index_b,'RFID_matched']+[[unmatched_id[0],tag_left]]
+                        df.at[i-floating_index_b,'RFID_matched']=RFID_matched
+                        floating_index_b+=1
+                        iou_backward=[z for z,v in df.loc[i-floating_index_b]['iou'].items() if unmatched_id[0 in z and v >overlap_thres]]
+                    elif tag_left in [i[4] for i in df.loc[i-floating_index_b]['RFID_tracks']]:
+                        skip_counter_b+=1
+                        floating_index_b+=1
+                        pass
+                    else: 
+                        skip_counter_b+=1
+                        floating_index_b+=1
+                    if i-floating_index_b ==-1 or skip_counter_b ==30:
+                        iou_backward=[1,1,1,1]
                 else:
                     pass
+                while len(iou_foward)<1:
+                    if unmatched_id[0] in df.loc[i+floating_index_f]['track_id']:
+                        a=[k for k in df.loc[i+floating_index_f]['tracks'] if k[4]==unmatched_id[0]]
+                        track=[[a[0][0],a[0][1],a[0][2],a[0][3],tag_left]]
+                        track_f=df.loc[i+floating_index_f,'RFID_tracks']+track
+                        df.at[i+floating_index_f,'RFID_tracks']=track_f
+                        RFID_matched=df.loc[i+floating_index_f,'RFID_matched']+[[unmatched_id[0],tag_left]]
+                        df.at[i+floating_index_f,'RFID_matched']=RFID_matched
+                        floating_index_f+=1
+                        iou_foward=[z for z,v in df.loc[i+floating_index_f]['iou'].items() if unmatched_id[0] in z and v >overlap_thres]
+                    elif tag_left in [i[4] for i in df.loc[i+floating_index_f]['RFID_tracks']]:
+                         skip_counter_f+=1
+                         floating_index_f+=1
+                         pass
+                    else:
+                         skip_counter_f+=1
+                         floating_index_f+=1
+                    if skip_counter_f ==30 or i+floating_index_f==len(df)-1:
+                        iou_foward=[1,1,1,1,1]
+                    else:
+                        pass
             #else:
             #    pass
     df['RFID_tracks']= df['RFID_tracks'].map(lambda x: duplicate_remove(x))
@@ -727,7 +735,7 @@ class mouse_tracker:
         except KeyboardInterrupt:
             self.df_tracks_temp.to_csv('tesst1221.csv')
         '''
-        self.df_tracks_temp=last_tag_match(self.df_tracks_temp,self.tags)
+        #self.df_tracks_temp=last_tag_match(self.df_tracks_temp,self.tags)
         self.df_tracks_temp=get_lost_tracks(self.df_tracks_temp,self.df_RFID_cage)
         return self.df_tracks_temp, df_matches
     def write_video(self,frame_count,img,Vid_type):
