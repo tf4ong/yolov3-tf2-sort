@@ -1,3 +1,4 @@
+#maybe good to look into mutli-core pandas to speed up the processing time
 import pandas as pd
 import numpy as np
 import math
