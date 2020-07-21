@@ -6,7 +6,7 @@ import tensorflow as tf
 from yolov3_tf2.models import YoloV3
 from yolov3_tf2.dataset import transform_images
 from yolov3_tf2.utils import get_object_details,get_center
-import RFID_matching as rm
+import match_temp as rm
 import pandas as pd
 #sort
 from sort import Sort
@@ -19,7 +19,7 @@ import time
 #import pandas as pd
 #flags to work in codes 
 flags.DEFINE_string('classes', './data/mouse.names', 'path to classes file')
-flags.DEFINE_string('weights', './checkpoints/yolov3_train_44.tf',
+flags.DEFINE_string('weights', './checkpoints/yolov3_train_179.tf',
                     'path to weights file')
 flags.DEFINE_integer('size', 416, 'resize images to')
 flags.DEFINE_string('data','./data','path to video and RFID csv file for tracker cage')
@@ -28,14 +28,10 @@ flags.DEFINE_string('output_format', 'XVID', 'codec used in VideoWriter when sav
 flags.DEFINE_integer('num_classes', 1, 'number of classes in the model')
 flags.DEFINE_string('Video_type','RFID','Sort tracks or RFID matched Video')
 flags.DEFINE_string('showvid','True','Show video during process')
-
-tags=[2018121360,2018121255, 801010273,2018121290]
-####surprise tensorflow2 loggin information
+tags=['2018121360','2018121255', '801010273','2018121290']
+####supresses tensorflow2 loggin information
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 logging.getLogger('tensorflow').setLevel(logging.FATAL)
-
-
-
 
 def main(_argv):
     ##progress bar
@@ -53,8 +49,9 @@ def main(_argv):
     codec = cv2.VideoWriter_fourcc(*FLAGS.output_format)
     if FLAGS.output == 'None':
         FLAGS.output=f'{FLAGS.data}/Track_output.avi'
-    writer=[FLAGS.output,codec,fps*2]
-    #out = cv2.VideoWriter(FLAGS.output, codec, fps, (1000, 1000))
+    colours=np.random.rand(300, 3) * 255
+    writer=[FLAGS.output,codec,fps]
+    #out = cv2.VideoWriter(FLAGS.output, codec, fps, (800, 800))
     df_RFID_cage=rm.load_RFID(FLAGS.data+'/RFID_data_all.csv')
     #starting mouse tracker processing
     vid_length=len(df_RFID_cage)
@@ -63,6 +60,7 @@ def main(_argv):
     #starting detection and sort loop
     frame_count=0
     t1=time.time()
+    print('starting')
     while vid.isOpened():#reading frames
         ret,img=vid .read()
         #yolo process
@@ -81,7 +79,6 @@ def main(_argv):
                     standard_cords.append(round(probability[i],4))
                     ds_boxes.append(standard_cords)
             ds_boxes_array=np.asarray(ds_boxes)
-            #updating sort tracker
             trackers = mot_tracker.update(ds_boxes_array)
             sort_tracks=[]
             for object in trackers:
@@ -89,17 +86,13 @@ def main(_argv):
                 sort_tracker=[xmin, ymin, xmax, ymax, index]
                 sort_tracks.append(sort_tracker)
             sort_tracks=sorted(sort_tracks,key=lambda x:x[4])
-            #
-            #updating mouse tracker
             mouse_tracks.update(frame_count, sort_tracks)
             pbar.update(1)
         else:
             if frame_count ==0:
-                
                 print('Unable to open video, please check video path')
                 break
             else:
-
                 vid.release()
                 break
     t2=time.time()
@@ -137,6 +130,7 @@ def main(_argv):
     write_time=t6-t5
     print('Wrting {str(frame_count)} took {str(write_time) seconds}')
     print('All processes completed')
+
 if __name__ == '__main__':
     try:
         app.run(main)
