@@ -46,7 +46,8 @@ a centroid tracking algorithm based on Euclidean distances is employed. A tutori
 - RFID detection at entry area will be verify the specific mouse that entered or existed
 ### Preliminary results of Yolov3-SORT (Work in Progress) 
 - Currently >70% of the Yolov3 detections are matched with RFID readings
-- Accuaray in a 5 minute video is approximately 87%
+- Accuaray of the RFID tags to detection matched is >80%
+- Results based on a 5 minute video
 
 
 ![](Sample_RFID.gif)
