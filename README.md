@@ -47,4 +47,6 @@ a centroid tracking algorithm based on Euclidean distances is employed. A tutori
 ### Preliminary results of Yolov3-SORT (Work in Progress) 
 - Currently >70% of the Yolov3 detections are matched with RFID readings
 - Accuaray in a 5 minute video is approximately 87%
-![](Sample_nonRFID.gif)
+
+
+![](Sample_RFID.gif)
