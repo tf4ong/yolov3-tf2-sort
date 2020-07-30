@@ -16,7 +16,7 @@
 - Records videos at 10.0 fps
 - [Camera Details](https://www.buyapi.ca/product/raspberry-pi-camera-g-with-fisheye-lens/)
 ## Analytical Codes and Modules
-##### yolov3-tf2 
+##### Yolov3-tensorflow2 
 yolov3-tf2:forked from [zzh8829 GitHub Page](https://github.com/zzh8829/yolov3-tf2)
 - A tensorflow2 implementation of yolov3-tf2 which is easy to install and use
 - Can be cloned and directly used on Anaconda or on Google Colab with GPU turned on 
@@ -45,9 +45,9 @@ a centroid tracking algorithm based on Euclidean distances is employed. A tutori
 - RFID detections at the frame of interest will be associated with the SORT track that is in highest proximation 
 - The SORT ID will then be matched with the read tag at that frame
 ### Preliminary results of Yolov3-SORT (Work in Progress) 
-- Currently >70% of the Yolov3 detections are matched with RFID readings
-- Accuaray of the RFID tags to detection matched is >80%
-- Results based on a 5 minute video
+- Currently >80% of the Yolov3 detections are matched with RFID readings
+- Accuaray of the RFID tags to detection matched is >85%
+- Results based on a 3 minute video
 
 
 ![](Sample_RFID.gif)
