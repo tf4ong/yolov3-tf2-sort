@@ -13,7 +13,7 @@
 - Locations of the readers must be sparse enough to minimize electromagnetic interference
 - User to identify and validate mouse 
 ##### Overhead Camera 
-- Records videos at 10.0 fps
+- Records videos at 15.0 fps
 - [Camera Details](https://www.buyapi.ca/product/raspberry-pi-camera-g-with-fisheye-lens/)
 ## Analytical Codes and Modules
 ##### Yolov3-tensorflow2 
